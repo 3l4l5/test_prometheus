@@ -1,0 +1,18 @@
+services:
+  server:
+    build:
+      dockerfile: backend.Dockerfile
+      target: final
+    ports:
+      - 8888:8888
+  node_exporter:
+    image: prom/node-exporter
+    ports:
+      - 9100:9100
+    pid: "service:server"
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml

@@ -2,7 +2,6 @@ services:
   server:
     build:
       dockerfile: backend.Dockerfile
-      target: final
     ports:
       - 8888:8888
   node_exporter:
